@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no" />
+<title>MissileTester — B-2 Strike Simulator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@400;600;700&family=Rajdhani:wght@500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet" />
+<link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+<canvas id="scene"></canvas>
+<div id="flash" class="flash"></div>
+<div id="stats" class="stats hidden"></div>
+<div id="hint" class="hint">Click on the city to select a target</div>
+
+<div id="cinematic" class="cinematic hidden">
+  <div class="cine-vignette"></div>
+  <div class="cine-lines" id="cineLines"></div>
+  <div class="cine-bars">
+    <div class="bar top"></div>
+    <div class="bar bottom"></div>
+  </div>
+</div>
+
+<div id="loader" class="loader">
+  <div class="ring"></div>
+  <div class="txt">Building the city…</div>
+</div>
+
+<div id="bottomBar" class="bottom-bar">
+  <button id="throwBtn" class="btn btn-throw" disabled>
+    <span class="mi">rocket_launch</span><span>Throw</span>
+  </button>
+  <div class="select-wrap">
+    <select id="bombSelect" class="select"></select>
+  </div>
+  <button id="settingsBtn" class="btn btn-settings">
+    <span class="mi">settings</span><span>Settings</span>
+  </button>
+</div>
+
+<div id="settingsCard" class="card hidden">
+  <div class="card-head">
+    <h2>Settings</h2>
+    <button id="closeSettings" class="icon-btn"><span class="mi">close</span></button>
+  </div>
+
+  <div class="bomb-info">
+    <div class="bi-title" id="biName">—</div>
+    <div class="bi-row"><span>Total mass</span><b id="biMass">—</b></div>
+    <div class="bi-row"><span>Explosive material</span><b id="biExp">—</b></div>
+    <div class="bi-row"><span>TNT equivalent</span><b id="biTnt">—</b></div>
+    <div class="bi-row"><span>Ground penetration</span><b id="biPen">—</b></div>
+  </div>
+
+  <div class="field">
+    <label for="altSelect">Altitude</label>
+    <div class="select-wrap small">
+      <select id="altSelect" class="select">
+        <option value="600">600 m</option>
+        <option value="2000">2 km</option>
+        <option value="14000">14 km</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="field">
+    <label for="speedSelect">Simulation speed</label>
+    <div class="select-wrap small">
+      <select id="speedSelect" class="select">
+        <option value="0.1">0.1×</option>
+        <option value="0.3">0.3×</option>
+        <option value="1" selected>1×</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="toggle-row">
+    <span>Follow the bomb</span>
+    <button class="switch" id="followToggle" aria-checked="false"><i></i></button>
+  </div>
+  <div class="toggle-row">
+    <span>Cinematic impact</span>
+    <button class="switch" id="cinematicToggle" aria-checked="true"><i></i></button>
+  </div>
+  <div class="toggle-row">
+    <span>Blast radius rings</span>
+    <button class="switch" id="ringsToggle" aria-checked="false"><i></i></button>
+  </div>
+
+  <button id="resetBtn" class="btn btn-reset">
+    <span class="mi">restart_alt</span><span>Reset city</span>
+  </button>
+
+  <div class="card-foot">
+    <a href="https://github.com/JustRohams/MissileTester" target="_blank" rel="noopener">
+      <span class="mi">code</span> github.com/JustRohams/MissileTester
+    </a>
+  </div>
+</div>
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
+  }
+}
+</script>
+<script type="module" src="js/main.js"></script>
+</body>
+</html>
